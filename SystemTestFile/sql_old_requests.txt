@@ -1,0 +1,11 @@
+# Old_request_corpuse
+
+SQL_CORPUSE = 'SELECT Свод."PART #" AS "ЗИП", Свод."НАЗНАЧЕНИЕ", Свод."ЛОГИЧЕСКИЙ УЧЕТ" AS "СКЛАД" FROM Свод WHERE Свод."PART #" = "{part}" GROUP BY Свод."PART #" HAVING MIN(Свод."ID");'
+SQL_CORPUSE_IN = 'SELECT Свод."MAIN_KEY", Свод."PART #" AS "ЗИП", Свод."НАЗНАЧЕНИЕ", Свод."ЛОГИЧЕСКИЙ УЧЕТ" AS "СКЛАД" FROM Свод WHERE INSTR(Свод."PART #", "{part}") GROUP BY Свод."PART #" HAVING MIN(Свод."ID");'
+SQL_CORPUSE_OUT = 'SELECT Свод."MAIN_KEY", Свод."PART #" AS "ЗИП", Свод."НАЗНАЧЕНИЕ", Свод."ЛОГИЧЕСКИЙ УЧЕТ" AS "СКЛАД" FROM Свод WHERE INSTR("{part}", Свод."PART #") GROUP BY Свод."PART #" HAVING MIN(Свод."ID");'
+
+#Old_request_purchase
+SQL_PURCHASE = 'SELECT Закупка1."АРТИКУЛ" AS "ЗИП", Закупка1."СУММА ПРОДАЖИ" AS "$, СТОИМОСТЬ ЗАКУПКИ ЗИП", Закупка1."КЛИЕНТ" AS "ДТК СЕРВИС (КОММЕНТАРИИ ИНЖЕНЕРОВ)", Закупка1."НАЗНАЧЕНИЕ" FROM Закупка1 WHERE Закупка1."АРТИКУЛ" = "{part}" GROUP BY Закупка1."АРТИКУЛ" HAVING MIN(Закупка1."ID");'
+SQL_PURCHASE_IN = 'SELECT Закупка1."MAIN_KEY", Закупка1."АРТИКУЛ" AS "ЗИП", Закупка1."СУММА ПРОДАЖИ" AS "$, СТОИМОСТЬ ЗАКУПКИ ЗИП", Закупка1."КЛИЕНТ" AS "ДТК СЕРВИС (КОММЕНТАРИИ ИНЖЕНЕРОВ)", Закупка1."НАЗНАЧЕНИЕ" FROM Закупка1 WHERE INSTR(Закупка1."АРТИКУЛ", "{part}") GROUP BY Закупка1."АРТИКУЛ" HAVING MIN(Закупка1."ID");'
+SQL_PURCHASE_OUT = 'SELECT Закупка1."MAIN_KEY", Закупка1."АРТИКУЛ" AS "ЗИП", Закупка1."СУММА ПРОДАЖИ" AS "$, СТОИМОСТЬ ЗАКУПКИ ЗИП", Закупка1."КЛИЕНТ" AS "ДТК СЕРВИС (КОММЕНТАРИИ ИНЖЕНЕРОВ)", Закупка1."НАЗНАЧЕНИЕ" FROM Закупка1 WHERE INSTR("{part}", Закупка1."АРТИКУЛ") GROUP BY Закупка1."АРТИКУЛ" HAVING MIN(Закупка1."ID");'
+
